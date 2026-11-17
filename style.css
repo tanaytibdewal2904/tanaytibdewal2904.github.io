@@ -1,0 +1,125 @@
+/* ---------- Palette & variables ---------- */
+:root {
+  --bg: #14161b;
+  --surface: #1c1f26;
+  --line: #2b2f39;
+  --text: #e9e7e2;
+  --muted: #9a9fab;
+  --accent: #a9bcf5;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "DM Sans", system-ui, sans-serif;
+}
+
+/* ---------- Reset (universal selector) ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* ---------- Navigation bar (flexbox + sticky) ---------- */
+#navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 8vw;
+  background: rgba(20, 22, 27, 0.92);
+  border-bottom: 1px solid var(--line);
+}
+.brand { color: var(--text); font-weight: 700; }
+.nav-links { display: flex; gap: 1.8rem; list-style: none; }
+#navbar .nav-links a { color: var(--muted); font-size: 0.95rem; }
+#navbar .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+/* ---------- Hero ---------- */
+.hero { padding: 10vh 8vw 9vh; max-width: 900px; }
+.hero-role { color: var(--muted); margin-bottom: 1rem; }
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.8rem;
+}
+.hero-line { max-width: 34rem; color: var(--muted); margin-bottom: 2rem; }
+
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  transition: background 0.2s, color 0.2s;
+}
+.btn:hover { background: var(--accent); color: var(--bg); text-decoration: none; }
+
+/* ---------- Sections ---------- */
+.block { padding: 4rem 8vw; border-top: 1px solid var(--line); max-width: 1000px; }
+.block h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+.block p { max-width: 38rem; margin-bottom: 1rem; }
+
+/* ---------- Cards (CSS Grid) ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+.card h3 { font-size: 1.1rem; margin-bottom: 0.3rem; }
+.card .meta { color: var(--accent); font-size: 0.9rem; margin-bottom: 0.8rem; }
+.card p { color: var(--muted); font-size: 0.97rem; margin-bottom: 0; }
+.feature h3 + p { margin-top: 0.6rem; }   /* adjacent sibling selector */
+
+/* ---------- Skill tags ---------- */
+.tags { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; }
+.tags li {
+  padding: 0.35rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  padding: 2rem 8vw;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 600px) {
+  #navbar { flex-direction: column; gap: 0.6rem; padding: 0.8rem 6vw; }
+  .nav-links { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .hero, .block, footer { padding-left: 6vw; padding-right: 6vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+}
